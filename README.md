@@ -1,2 +1,2 @@
-Please put hw7 files in this directory.
+#Web application project based on Django framework
 The url to access is: 18.218.48.151
