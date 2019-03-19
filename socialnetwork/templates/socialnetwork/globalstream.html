@@ -1,0 +1,42 @@
+{% extends "socialnetwork/base.html" %}
+
+{% block user-info %}
+<div class="dropdown">
+  <a class="dropdownmain" id ="id_logged_in_user_name">  {{user.first_name}} {{user.last_name}}</a>
+  <div class="dropdown-content">
+    <a href="{% url 'globalstream' %}" id ="id_nav_global_stream">Global Stream</a>
+    <a href="{% url 'followerstream' %}" id ="id_nav_follower_stream">Follower Stream</a>
+    <a href="{% url 'profile' user.id %}" id ="id_nav_profile">My Profile</a>
+    <a href="{% url 'login' %}" id ="id_nav_logout">Logout</a>
+</div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<p>Global Stream</p>
+{% for error in errors %}
+    <div class="error" id="global_error">
+        {{error}}
+    </div>
+{% endfor %}
+<form method="post" action="{% url 'add_post' %}">
+    New Post:
+    <input type="text" name="post_text" id="id_post_text">
+    <button type="submit" id="id_post_button">Submit</button><br>
+    {% csrf_token %}
+</form>
+
+<newpost></newpost>
+{% for post in posts %}
+    <a href="{% url 'profile' post.post_creator.id %}" id="id_post_profile_{{post.id}}">Posted by {{post.post_creator}}</a>
+    <span id="id_post_text_{{post.id}}" >{{post.content}}</span>
+    <span id = "id_post_date_time_{{post.id}}">{{post.post_time}}</span>
+    <ol id="todo-list_{{post.id}}">
+    </ol>
+    <label>Comment:</label>
+    <input id="comment_{{post.id}}" type="text" name="comment">
+    <button onclick="addComment({{post.id}})">Comment</button>
+    <span id="error" class="error"></span><br>
+{% endfor %}
+{% endblock %}

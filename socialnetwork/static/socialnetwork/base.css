@@ -1,0 +1,160 @@
+.head-container{
+  background: grey;
+  color: white;
+  height: 80px;
+  position: relative;
+}
+
+.big-heading {
+  float: left;
+  font-size: 40px;
+  font-family: sans-serif;
+  position: absolute;
+  left: 80px;
+  bottom: 20px;
+
+}
+
+.dropdownmain{
+  color: white;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 200px;
+  box-shadow: 0px 2px 16px 0px rgba(0,0,0,0.2);
+  z-index:1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: grey;
+}
+
+.user-info {    
+  font-size: 20px;
+  font-family: sans-serif;
+  position: absolute;
+  right: 200px;
+  bottom: 5px;
+}
+
+.message {
+  color:blue;
+  text-align: center;
+  font-weight: bold;
+  font-size: x-large;
+  font-family: sans-serif;
+  padding: 25px 50px;
+}
+
+.search-bar {
+  text-align: center;
+  padding: 25px 50px;
+}
+
+.content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  font-family: sans-serif;
+  font-size: x-large;
+  padding: 25px 50px;
+}
+
+.bio{
+  width:500px; 
+  height:100px;
+}
+
+.Post{
+  text-align: left;
+}
+
+.Comment{
+  margin-left: 50px;
+  margin-right: 50px;
+  text-align: left;
+}
+
+.error {
+  color:red;
+}
+
+.list {
+  padding: 3px;
+}
+
+.list-link {
+  padding: 5px;
+}
+
+.list-link:hover {
+ background-color:lightgray;
+}
+
+th {
+  font-weight: normal;
+  text-align: left;
+}
+
+a {
+ text-decoration: none;
+}
+
+button {
+  font-size: x-large;
+  padding: 3px;
+}
+
+input {
+  font-size: x-large;
+}
+
+div, form {
+  padding: 4px;
+  text-align: center;
+}
+
+.logintable{
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.registertable{
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.navlink {
+  background-color: lightgray;
+}
+
+.letter {
+  padding: 3px;
+  font-family: sans-serif;
+  font-size: x-large;
+
+}
+
+.letter:hover {
+ background-color:lightgray;
+}

@@ -1,0 +1,36 @@
+{% extends "socialnetwork/base.html" %}
+
+{% block user-info %}
+<div class="dropdown">
+  <a class="dropdownmain" id ="id_logged_in_user_name">
+  {{user.first_name}} {{user.last_name}}</a>
+    <div class="dropdown-content">
+        <a href="{% url 'globalstream' %}" id ="id_nav_global_stream">Global Stream</a>
+        <a href="{% url 'followerstream' %}" id ="id_nav_follower_stream">Follower Stream</a>
+        <a href="{% url 'profile' user.id %}" id ="id_nav_profile">My Profile</a>
+        <a href="{% url 'login' %}" id ="id_nav_logout">Logout</a>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<span id="id_user_name">Profile Page for {{profile.user.first_name}} {{profile.user.last_name}}</span>
+
+<div>
+    {% if profile.pic_saved %}
+        <img src="{% url 'get_photo' profile.id %}" id="id_user_picture" width="200px">
+        <br>
+    {% else %}
+        <img src="https://i.stack.imgur.com/l60Hf.png" id="id_user_picture" width="200px">
+        <br>
+    {% endif %}
+</div>
+<textarea type="text" name="user_bio" rows="10" cols="100" readonly="" id="id_user_bio">{{user_bio}}</textarea><br>
+
+<form action="{% url 'follow' profile.user.id %}" method="post" class="profile-form">
+    <button type="submit" id="{{follow}}">{{follow}}</button>
+    {% csrf_token %}
+</form>
+
+{% endblock %}

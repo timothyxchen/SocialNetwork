@@ -1,0 +1,48 @@
+{% extends "socialnetwork/base.html" %}
+
+{% block user-info %}
+<div class="dropdown">
+  <a class="dropdownmain" id ="id_logged_in_user_name">
+  {{user.first_name}} {{user.last_name}}</a>
+    <div class="dropdown-content">
+        <a href="{% url 'globalstream' %}" id ="id_nav_global_stream">Global Stream</a>
+        <a href="{% url 'followerstream' %}" id ="id_nav_follower_stream">Follower Stream</a>
+        <a href="{% url 'profile' user.id %}" id ="id_nav_profile">My Profile</a>
+        <a href="{% url 'login' %}" id ="id_nav_logout">Logout</a>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<span id="id_user_name">Profile Page for {{user.first_name}} {{user.last_name}}</span>
+
+<div>
+    {% if profile.pic_saved %}
+        <img src="{% url 'get_photo' profile.id %}"  id="id_user_picture" width="200px">
+        <br>
+    {% else %}
+        <img src="https://i.stack.imgur.com/l60Hf.png" id="id_user_picture" width="200px">
+        <br>
+    {% endif %}
+</div>
+<form enctype="multipart/form-data" action="{% url 'update_profile'%}" method="post" class="profile-form">
+    <table>
+        <tr>
+            <td>{{form.label_tag}}</td>
+            <td>{{form}}</td>
+            <td class="error">
+                {% for error in field.errors %} {{error}} {% endfor %}
+            </td>
+        </tr>
+    </table>
+    <textarea type="text" name="user_bio" id="id_bio_text" rows="10" cols="100">{{user_bio}}</textarea><br>
+    <button type="submit" id="id_update_profile_button">Submit</button><br>
+    {% csrf_token %}
+</form>
+You are following:<br>
+{% for followPerson in followlist %}
+    <a href="{% url 'profile' followPerson.id %}" id="id_profile_link_{{followPerson.first_name}}_{{followPerson.last_name}}">{{followPerson.first_name}} {{followPerson.last_name}}</a><br>
+{% endfor %}
+
+{% endblock %}
